@@ -1,5 +1,5 @@
 $(function () {
-	let websocket = newWebSocket("wss://" + window.location.host + "/websocket");
+	let websocket = newWebSocket("wss:/" + window.location.host + "/websocket");
 	let room = $("chat-text");
 	websocket.addEventListener("message", function (e) {
 		let data = JSON.parse(e.data);

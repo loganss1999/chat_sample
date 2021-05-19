@@ -70,6 +70,10 @@ func handleMessages() {
  for {
   //grab any next message from channel
   msg := <-broadcaster
+  //store message in redis
+  json, err := json.Marshal(msg)
+  if err != nil { panic(err) }
+  if err := rdb.RPush("chat_messages", json).Err(); err != nil { panic(err) }
   //send message to every client currently connected
   for client := range clients {
    err := client.WriteJSON(msg)
@@ -79,10 +83,6 @@ func handleMessages() {
     delete(clients, client)
    }
   }
-  //store message in redis
-  json, err := json.Marshal(msg)
-  if err != nil { panic(err) }
-  if err := rdb.RPush("chat_messages", json).Err(); err != nil { panic(err) }
  }
 }
 
