@@ -38,7 +38,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
  clients[ws] = true
 
  //send previous messages if there are any
- if rdb.Exists("chat_message").Val() != 0 {
+ if rdb.Exists("chat_messages").Val() != 0 {
   chatMessages, err := rdb.LRange("chat_messages", 0, -1).Result()
   if err != nil { panic(err) }
   for _, chatMessage := range chatMessages {
