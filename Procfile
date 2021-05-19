@@ -1,1 +1,1 @@
-web: bin/heroku_chat_sample
+web: bin/chat_sample
