@@ -22,7 +22,7 @@ var upgrader = websocket.Upgrader {
 }
 
 type ChatMessage struct {
- Username string`json:"username"`
+ Username string `json:"username"`
  Text string `json:"text"`
 }
 
