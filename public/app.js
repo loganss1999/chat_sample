@@ -3,8 +3,8 @@ window.addEventListener('DOMContentLoaded', (_) => {
 	let room = document.getElementById("chat-text");
 	websocket.addEventListener("message", function (e) {
 		let data = JSON.parse(e.data);
-		let chatContent = `<p>${data.username}: ${data.text}</p>`;
-		("body").append(chatContent);
+		let chatContent = "<p>"+`${data.username}`+": "+`${data.text}`+"</p";
+		room.append(chatContent);
 		room.scrollTop = room.ScrollHeight; //auto scroll to bottom
 	});
 	
